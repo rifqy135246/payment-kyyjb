@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Info</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        .container {
+            background-color: #ffffff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .payment-method {
+            margin: 10px 0;
+            padding: 10px;
+        }
+        .payment-method button {
+            width: 100%;
+            border: none;
+            color: white;
+            font-size: 16px;
+            padding: 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .confirm {
+            margin: 10px 0;
+            padding: 10px;
+        }
+        .confirm button {
+            width: 100%;
+            border: none;
+            color: rgb(255, 0, 0);
+            font-size: 16px;
+            padding: 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        /* Warna khusus untuk setiap metode pembayaran */
+        .dana button {
+            background-color: #0a75bc;
+        }
+        .dana button:hover {
+            background-color: #085a8c;
+        }
+        .gopay button {
+            background-color: #068f8f;
+        }
+        .gopay button:hover {
+            background-color: #15b2c7;
+        }
+        .ovo button {
+            background-color: #5f259f;
+        }
+        .ovo button:hover {
+            background-color: #441c74;
+        }
+        .telkom button {
+            background-color: #ed1c24;
+        }
+        .telkom button:hover {
+            background-color: #b7151c;
+        }
+        .xl button {
+            background-color: #005bac;
+        }
+        .xl button:hover {
+            background-color: #004285;
+        }
+        .confirm button{
+            background-color: #e6e6e6;
+        }
+        .confirm button:hover {
+            background-color: #004285;
+        }
+
+        /* Responsif untuk layar kecil */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 20px;
+            }
+            .payment-method button {
+                font-size: 14px;
+                padding: 10px;
+            }
+        }
+
+        /* Responsif untuk layar sangat kecil */
+        @media (max-width: 480px) {
+            .container {
+                padding: 15px;
+            }
+            h1 {
+                font-size: 18px;
+            }
+            .payment-method button {
+                font-size: 13px;
+                padding: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Payment Information</h1>
+        <div class="payment-method dana">
+            <button onclick="copyToClipboard('0813-7174-8626')">DANA: 0813-7174-8626</button>
+        </div>
+        <div class="payment-method gopay">
+            <button onclick="copyToClipboard('0813-7174-8626')">GoPay: 0813-7174-8626</button>
+        </div>
+        <div class="payment-method ovo">
+            <button onclick="copyToClipboard('0878-9709-3159')">OVO: 0878-9709-3159</button>
+        </div>
+        <div class="payment-method telkom">
+            <button onclick="copyToClipboard('0813-7174-8626')">Telkom: 0813-7174-8626</button>
+        </div>
+        <div class="payment-method xl">
+            <button onclick="copyToClipboard('0878-9709-3159')">XL: 0878-9709-3159</button>
+        </div>
+        <button class="confirm">
+            <a href="https://wa.me/6287897093159" target="_blank">KIRIM BUKTI TRX DISINI!!</a>
+        </button>
+    </div>
+
+    <script>
+        function copyToClipboard(text) {
+    if (navigator.clipboard) {
+        navigator.clipboard.writeText(text).then(() => {
+            alert(`Nomor ${text} telah disalin ke clipboard!`);
+        }).catch(() => {
+            fallbackCopyToClipboard(text);
+        });
+    } else {
+        fallbackCopyToClipboard(text);
+    }
+}
+
+function fallbackCopyToClipboard(text) {
+    const tempInput = document.createElement('textarea');
+    tempInput.value = text;
+    tempInput.style.position = 'absolute';
+    tempInput.style.left = '-9999px';
+    document.body.appendChild(tempInput);
+    tempInput.select();
+    try {
+        document.execCommand('copy');
+        alert(`Nomor ${text} telah disalin ke clipboard!`);
+    } catch (err) {
+        alert('Gagal menyalin nomor. Silakan coba lagi.');
+        console.error('Error:', err);
+    }
+    document.body.removeChild(tempInput);
+}
+
+    </script>
+</body>
+</html>
